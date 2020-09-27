@@ -2,6 +2,7 @@ const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
+const Body = Matter.Body;
 
 var engine, world;
 var box1, pig1,pig3;
@@ -93,7 +94,12 @@ function mouseReleased(){
 }
 
 function keyPressed(){
-    if(keyCode === 32){
+    if(keyCode === 32 && bird.body.speed<1){
+       console.log(bird.body.angle);
+        bird.trajectory = [];
+       Body.setPosition(bird.body,{x:200, y:50});
+       bird.body.speed = 0;
+       bird.body.angle = PI/2;
        slingshot.attach(bird.body);
     }
 }
